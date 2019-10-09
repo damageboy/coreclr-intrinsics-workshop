@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Intrinsics.X86;
 
-namespace Packing.Ex03
+namespace Workshop.Ex03
 {
     public static class Delta
     {

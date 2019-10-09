@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
-using Packing;
-using Packing.Ex00;
-using Packing.Ex03;
+using Workshop;
+using Workshop.Ex00;
 
 namespace Tests
 {

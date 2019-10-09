@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
 using static System.Math;
 
-namespace Packing.Ex04
+namespace Workshop.Ex04
 {
     public static class Decimalize
     {

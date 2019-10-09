@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
-using Packing.Ex02;
 using Tests;
+using Workshop.Ex02;
 
 namespace Bench
 {

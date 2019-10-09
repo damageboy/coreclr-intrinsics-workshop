@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Intrinsics.X86;
 
-namespace Packing.Ex02
+namespace Workshop.Ex02
 {
     public class Max
     {

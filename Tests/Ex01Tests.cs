@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using NUnit.Framework;
-using Packing.Ex01;
+using Workshop.Ex01;
 
 namespace Tests
 {

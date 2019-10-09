@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using Packing.Ex02;
+using Workshop.Ex02;
 
 namespace Tests
 {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using NUnit.Framework;
-using Packing;
-using Packing.Ex04;
+using Workshop;
+using Workshop.Ex04;
 
 namespace Tests
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Intrinsics.X86;
 
-namespace Packing.Ex05
+namespace Workshop.Ex05
 {
     public class GCD
     { 

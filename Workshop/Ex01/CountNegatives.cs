@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
@@ -6,7 +5,7 @@ using static System.Runtime.Intrinsics.X86.Avx;
 using static System.Runtime.Intrinsics.X86.Avx2;
 using static System.Runtime.Intrinsics.X86.Popcnt;
 
-namespace Packing.Ex01
+namespace Workshop.Ex01
 {
     public static class CountNegatives
     {

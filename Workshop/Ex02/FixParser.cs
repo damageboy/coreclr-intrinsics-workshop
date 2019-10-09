@@ -7,7 +7,7 @@ using static System.Runtime.Intrinsics.X86.Popcnt.X64;
 using static System.Runtime.Intrinsics.X86.Bmi1.X64;
 using static System.Runtime.Intrinsics.X86.Bmi2.X64;
 
-namespace Packing.Ex02
+namespace Workshop.Ex02
 {
     public static class FixParser
     {
