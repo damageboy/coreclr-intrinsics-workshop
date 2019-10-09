@@ -25,7 +25,6 @@ namespace Workshop.Ex02
         internal static unsafe (int numSoh, int numEq) ValidateSeparatorsScalar(ReadOnlySpan<byte> msg, int msgLength)
         {
             fixed (byte *msgPtr = msg) {
-                int numFields = 0;
                 var p = msgPtr;
 
                 var numSoh = 0;
