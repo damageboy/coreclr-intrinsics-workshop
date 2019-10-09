@@ -1,4 +1,4 @@
-# Exercise 2
+# Exercise 3
 
 ## SIMD for text processing:
 
@@ -67,8 +67,7 @@ Here's a sample message I used `▪` for the 0x1 charchter which is not normally
 
 ```
 
-
-This first excercise is about processing the message to validate it.
+This excercise is about processing the message to determine field boundaries.
 
 So the idea is that for the message above we would end up building a table like this:
 

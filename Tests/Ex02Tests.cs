@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Workshop.Ex02;
+using Workshop.Ex03;
 
 namespace Tests
 {
@@ -30,11 +31,10 @@ namespace Tests
             var byteLen = Encoding.ASCII.GetBytes(msg.AsSpan(), bytes);
 
             Assert.That(byteLen, Is.EqualTo(msg.Length));
-            var numFields = FixParser.GetFieldBoundariesScalar(bytes, byteLen, tagStarts, valueStarts);
+            var (numSoh, numEq) = FixValidator.ValidateSeparatorsScalar(bytes, byteLen);
 
-            Assert.That(numFields, Is.EqualTo(8));
-            Assert.That(tagStarts.Slice(0, numFields).ToArray(),   Is.EquivalentTo(new [] { 0, 10, 16, 21, 29, 39, 46, 67}));
-            Assert.That(valueStarts.Slice(0, numFields).ToArray(), Is.EquivalentTo(new [] { 2, 12, 19, 24, 32, 42, 49, 70}));
+            Assert.That(numSoh, Is.EqualTo(8));
+            Assert.That(numEq, Is.EqualTo(8));
         }
 
 
@@ -48,11 +48,9 @@ namespace Tests
             var byteLen = Encoding.ASCII.GetBytes(msg.AsSpan(), bytes);
 
             Assert.That(byteLen, Is.EqualTo(msg.Length));
-            var numFields = FixParser.GetFieldBoundariesVectorized(bytes, byteLen, tagStarts, valueStarts);
+            var (numSoh, numEq) =  FixValidator.ValidateSeparatorsVectorized(bytes, byteLen);
 
-            Assert.That(numFields, Is.EqualTo(8));
-            Assert.That(tagStarts.Slice(0, numFields).ToArray(),   Is.EquivalentTo(new [] { 0, 10, 16, 21, 29, 39, 46, 67}));
-            Assert.That(valueStarts.Slice(0, numFields).ToArray(), Is.EquivalentTo(new [] { 2, 12, 19, 24, 32, 42, 49, 70}));
-        }
+            Assert.That(numSoh, Is.EqualTo(8));
+            Assert.That(numEq, Is.EqualTo(8));        }
     }
 }

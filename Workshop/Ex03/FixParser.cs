@@ -1,13 +1,8 @@
 using System;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
-using static System.Runtime.Intrinsics.X86.Avx;
-using static System.Runtime.Intrinsics.X86.Avx2;
-using static System.Runtime.Intrinsics.X86.Popcnt.X64;
-using static System.Runtime.Intrinsics.X86.Bmi1.X64;
-using static System.Runtime.Intrinsics.X86.Bmi2.X64;
 
-namespace Workshop.Ex02
+namespace Workshop.Ex03
 {
     public static class FixParser
     {
@@ -43,23 +38,23 @@ namespace Workshop.Ex02
                 var eqVec = Vector256.Create((byte) EQ);
 
                 while (p <= endVectorized) {
-                    var text1 = LoadDquVector256(p);
-                    var text2 = LoadDquVector256(p + N);
+                    var text1 = Avx.LoadDquVector256(p);
+                    var text2 = Avx.LoadDquVector256(p + N);
 
-                    var sohMask = (ulong)(uint) MoveMask(CompareEqual(text1, sohVec));
-                    var eqMask = (ulong) (uint) MoveMask(CompareEqual(text1, eqVec));
-                    sohMask |= (ulong) MoveMask(CompareEqual(text2, sohVec)) << 32;
-                    eqMask  |= (ulong) MoveMask(CompareEqual(text2, eqVec)) << 32;
-                    var numSoh = (int) PopCount(sohMask);
-                    var numEq  = (int) PopCount(eqMask);
+                    var sohMask = (ulong)(uint) Avx2.MoveMask(Avx2.CompareEqual(text1, sohVec));
+                    var eqMask = (ulong) (uint) Avx2.MoveMask(Avx2.CompareEqual(text1, eqVec));
+                    sohMask |= (ulong) Avx2.MoveMask(Avx2.CompareEqual(text2, sohVec)) << 32;
+                    eqMask  |= (ulong) Avx2.MoveMask(Avx2.CompareEqual(text2, eqVec)) << 32;
+                    var numSoh = (int) Popcnt.X64.PopCount(sohMask);
+                    var numEq  = (int) Popcnt.X64.PopCount(eqMask);
 
                     for (var i = 0; i < numSoh; i++) {
-                        var pos = (int) TrailingZeroCount(ParallelBitDeposit(1UL << i, sohMask)) + 1;
+                        var pos = (int) Bmi1.X64.TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << i, sohMask)) + 1;
                         *ts++ = pos;
                     }
 
                     for (var i = 0; i < numEq; i++) {
-                        var pos = (int) TrailingZeroCount(ParallelBitDeposit(1UL << i, eqMask));
+                        var pos = (int) Bmi1.X64.TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << i, eqMask));
                         *vs++ = pos;
                     }
 
